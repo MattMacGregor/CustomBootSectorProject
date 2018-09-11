@@ -7,6 +7,5 @@ jmp $
 %include "print.asm"
 hi_msg db 'Hi ', 0
 bye_msg db 'Bye', 0
-jmp $ ; Hangs
 times 510 - ($ - $$) db 0
 dw 0xaa55
