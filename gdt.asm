@@ -29,8 +29,8 @@ gdt_end:
 
 ; GDT descriptor
 gdt_descriptor:
-  dw gdt_end  gdt_start - 1
+  dw gdt_end - gdt_start - 1
   dd gdt_start
 
-CODE_SEG equ gdt_code - gdt_start
+CODE_SEG equ gdt_code - gdt_start ; equ is practically #define
 DATA_SEG equ gdt_data - gdt_start
