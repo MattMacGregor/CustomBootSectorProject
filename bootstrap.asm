@@ -16,7 +16,7 @@ KERNEL_OFFSET equ 0x1000
   call switch_to_pm
 
 %include "print.asm"
-%include "disk_load.asm"
+%include "disk_read.asm"
 %include "print_message_pm.asm"
 %include "gdt.asm"
 %include "enter_pm.asm"
@@ -36,6 +36,7 @@ load_kernel:
   ret
 
 [bits 32]
+BEGIN_PM:
 
 mov ebx, MSG_PROT_MODE
 call print_string_pm
