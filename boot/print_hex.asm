@@ -40,5 +40,4 @@ print_hex: ;Prints the hex value stored in dx
   call print_string
   popa
   ret
-%include "print.asm"
 HEX_OUT db '0x0000', 0

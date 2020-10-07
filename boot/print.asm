@@ -1,4 +1,3 @@
-[org 0x7c00]
 print_char: ; Prints the character stored in al
   pusha
   mov ah, 0x0e

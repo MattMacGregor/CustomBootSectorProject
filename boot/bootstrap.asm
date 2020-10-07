@@ -1,11 +1,16 @@
-;boo sector code that boots a C kernel in 32-bit protected mode
+;boot sector code that boots a C kernel in 32-bit protected mode
 
 [org 0x7c00]
+[bits 16]
 KERNEL_OFFSET equ 0x1000
 
   mov [BOOT_DRIVE], dl
-
-  mov bp, 0x9000
+  mov bx, 0x07E0
+  mov ss, bx
+  mov bx, 0
+  mov ds, bx
+  mov es, bx
+  mov bp, 0x1200
   mov sp, bp
 
   mov bx, MSG_REAL_MODE
@@ -36,14 +41,13 @@ load_kernel:
   ret
 
 [bits 32]
+[extern main]
 BEGIN_PM:
 
 mov ebx, MSG_PROT_MODE
 call print_string_pm
 
 call KERNEL_OFFSET
-
-jmp $
 
 BOOT_DRIVE db 0
 MSG_REAL_MODE db "Started in 16-bit Real Mode", 0
